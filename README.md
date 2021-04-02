@@ -1,6 +1,8 @@
 jig-maven-plugin
 ============================================================
 
+[![](https://maven-badges.herokuapp.com/maven-central/com.github.irof/jig-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.irof/jig-maven-plugin/)
+
 [JIG](https://github.com/dddjava/jig)
 
 # usage
