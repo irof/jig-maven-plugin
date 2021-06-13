@@ -14,7 +14,10 @@ import org.dddjava.jig.infrastructure.configuration.JigProperties;
 import org.dddjava.jig.infrastructure.javaparser.JavaparserAliasReader;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Mojo(name = "jig")
 public class JigMojo extends AbstractMojo {
@@ -28,12 +31,17 @@ public class JigMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project.build.sourceDirectory}", readonly = true, required = true)
     private File sourceDirectory;
 
-    @Parameter(defaultValue = ".+\\.domain\\..+", readonly = true, required = true)
+    @Parameter(property = "jig.document.types")
+    private String[] documentTypes;
+
+    @Parameter(property = "jig.pattern.domain")
     private String domainPattern;
 
     public void execute() {
+        List<JigDocument> documentTypes = resolveDocumentTypes();
+
         JigProperties properties = new JigProperties(
-                JigDocument.canonical(),
+                documentTypes,
                 domainPattern,
                 targetDirectory.toPath().resolve("jig")
         );
@@ -44,7 +52,15 @@ public class JigMojo extends AbstractMojo {
                 new BinarySourcePaths(Collections.singleton(targetClassesDirectory.toPath())),
                 new CodeSourcePaths(Collections.singleton(sourceDirectory.toPath()))
         ));
+        configuration.documentHandlers().handleJigDocuments(documentTypes, configuration.outputDirectory());
+    }
 
-        configuration.documentHandlers().handleJigDocuments(JigDocument.canonical(), configuration.outputDirectory());
+    private List<JigDocument> resolveDocumentTypes() {
+        if (documentTypes == null || documentTypes.length == 0) {
+            return JigDocument.canonical();
+        }
+        return Arrays.stream(documentTypes)
+                .map(JigDocument::valueOf)
+                .collect(Collectors.toList());
     }
 }
