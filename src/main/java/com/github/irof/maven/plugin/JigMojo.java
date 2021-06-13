@@ -1,16 +1,14 @@
 package com.github.irof.maven.plugin;
 
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.dddjava.jig.application.service.JigSourceReadService;
-import org.dddjava.jig.domain.model.jigdocument.documentformat.JigDiagramFormat;
-import org.dddjava.jig.domain.model.jigdocument.documentformat.JigDocument;
-import org.dddjava.jig.domain.model.jigsource.file.SourcePaths;
-import org.dddjava.jig.domain.model.jigsource.file.binary.BinarySourcePaths;
-import org.dddjava.jig.domain.model.jigsource.file.text.CodeSourcePaths;
-import org.dddjava.jig.domain.model.jigsource.jigloader.SourceCodeAliasReader;
+import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
+import org.dddjava.jig.domain.model.sources.file.SourcePaths;
+import org.dddjava.jig.domain.model.sources.file.binary.BinarySourcePaths;
+import org.dddjava.jig.domain.model.sources.file.text.CodeSourcePaths;
+import org.dddjava.jig.domain.model.sources.jigreader.SourceCodeAliasReader;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
 import org.dddjava.jig.infrastructure.configuration.JigProperties;
 import org.dddjava.jig.infrastructure.javaparser.JavaparserAliasReader;
@@ -30,16 +28,14 @@ public class JigMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project.build.sourceDirectory}", readonly = true, required = true)
     private File sourceDirectory;
 
-    public void execute() throws MojoExecutionException {
+    @Parameter(defaultValue = ".+\\.domain\\..+", readonly = true, required = true)
+    private String domainPattern;
+
+    public void execute() {
         JigProperties properties = new JigProperties(
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                targetDirectory.toPath().resolve("jig"),
-                JigDiagramFormat.SVG
+                JigDocument.canonical(),
+                domainPattern,
+                targetDirectory.toPath().resolve("jig")
         );
         Configuration configuration = new Configuration(properties, new SourceCodeAliasReader(new JavaparserAliasReader()));
 
