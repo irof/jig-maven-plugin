@@ -34,3 +34,11 @@ jig-maven-plugin
 $ mvn jig:jig
 ```
 
+# 設定
+
+|対象|configurationタグ名|プロパティ名|
+|----|----|----|
+|出力対象JIGドキュメント| `documentTypes` | `jig.document.types` |
+|ドメインのパターン| `domainPattern` | `jig.pattern.domain` |
+
+ともに任意。指定なしの場合はJIGのデフォルトに従う。
