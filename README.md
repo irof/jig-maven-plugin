@@ -17,7 +17,7 @@ jig-maven-plugin
             <plugin>
                 <groupId>com.github.irof</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>0.3</version>
+                <version>0.4</version>
                 <configuration>
                     <documentTypes>
                         <documentType>PackageRelationDiagram</documentType>
