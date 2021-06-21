@@ -8,10 +8,8 @@ import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
 import org.dddjava.jig.domain.model.sources.file.SourcePaths;
 import org.dddjava.jig.domain.model.sources.file.binary.BinarySourcePaths;
 import org.dddjava.jig.domain.model.sources.file.text.CodeSourcePaths;
-import org.dddjava.jig.domain.model.sources.jigreader.SourceCodeAliasReader;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
 import org.dddjava.jig.infrastructure.configuration.JigProperties;
-import org.dddjava.jig.infrastructure.javaparser.JavaparserAliasReader;
 
 import java.io.File;
 import java.util.Arrays;
@@ -45,7 +43,7 @@ public class JigMojo extends AbstractMojo {
                 domainPattern,
                 targetDirectory.toPath().resolve("jig")
         );
-        Configuration configuration = new Configuration(properties, new SourceCodeAliasReader(new JavaparserAliasReader()));
+        Configuration configuration = new Configuration(properties);
 
         JigSourceReadService sourceReadService = configuration.implementationService();
         sourceReadService.readSourceFromPaths(new SourcePaths(
