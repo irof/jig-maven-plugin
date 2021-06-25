@@ -31,13 +31,13 @@ jig-maven-plugin
 ```
 
 ```
-$ mvn jig:jig
+mvn jig:jig
 ```
 
 or
 
 ```
-$ mvn com.github.irof:jig-maven-plugin:0.5:jig
+mvn com.github.irof:jig-maven-plugin:0.5:jig
 ```
 
 # 設定
