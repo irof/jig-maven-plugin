@@ -37,7 +37,7 @@ mvn jig:jig
 or
 
 ```
-mvn com.github.irof:jig-maven-plugin:0.5:jig
+mvn com.github.irof:jig-maven-plugin:jig
 ```
 
 # 設定
