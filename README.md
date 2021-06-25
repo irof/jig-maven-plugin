@@ -34,6 +34,12 @@ jig-maven-plugin
 $ mvn jig:jig
 ```
 
+or
+
+```
+$ mvn com.github.irof:jig-maven-plugin:0.5:jig
+```
+
 # 設定
 
 |対象|configurationタグ名|プロパティ名|
