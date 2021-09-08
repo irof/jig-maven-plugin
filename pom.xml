@@ -3,7 +3,7 @@
 
     <groupId>com.github.irof</groupId>
     <artifactId>jig-maven-plugin</artifactId>
-    <version>0.5</version>
+    <version>0.6</version>
     <packaging>maven-plugin</packaging>
 
     <name>jig-maven-plugin</name>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.dddjava.jig</groupId>
             <artifactId>jig-core</artifactId>
-            <version>2021.6.3.1</version>
+            <version>2021.9.1</version>
         </dependency>
 
         <dependency>
