@@ -7,6 +7,18 @@ jig-maven-plugin
 
 # usage
 
+## 簡易
+
+```
+mvn com.github.irof:jig-maven-plugin:jig
+```
+
+`pom.xml` には何も書かなくていいです。
+
+## 通常
+
+プラグインのバージョンとか設定を `/project/build/plugins` に追加
+
 ```pom.xml
 <project>
     ...
@@ -17,7 +29,7 @@ jig-maven-plugin
             <plugin>
                 <groupId>com.github.irof</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>0.5</version>
+                <version>0.6</version>
                 <configuration>
                     <documentTypes>
                         <documentType>PackageRelationDiagram</documentType>
@@ -30,14 +42,10 @@ jig-maven-plugin
 </project>
 ```
 
+実行
+
 ```
 mvn jig:jig
-```
-
-or
-
-```
-mvn com.github.irof:jig-maven-plugin:jig
 ```
 
 # 設定
