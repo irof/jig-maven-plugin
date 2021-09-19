@@ -24,6 +24,8 @@ jobs:
         run: |
           mvn --batch-mode versions:set -DnewVersion=${RELEASE_VERSION} -DgenerateBackupPoms=false
           mvn --batch-mode deploy
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@irof.me"
           git add .
           git commit -am "RELEASE ${RELEASE_VERSION}"
           git tag ${RELEASE_VERSION}
