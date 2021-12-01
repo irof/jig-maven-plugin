@@ -29,11 +29,8 @@ mvn com.github.irof:jig-maven-plugin:jig
             <plugin>
                 <groupId>com.github.irof</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>0.6</version>
+                <version>2021.11.4</version>
                 <configuration>
-                    <documentTypes>
-                        <documentType>PackageRelationDiagram</documentType>
-                    </documentTypes>
                     <domainPattern>.*</domainPattern>
                 </configuration>
             </plugin>
