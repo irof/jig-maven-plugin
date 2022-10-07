@@ -15,6 +15,12 @@ mvn com.github.irof:jig-maven-plugin:jig
 
 `pom.xml` には何も書かなくていいです。
 
+「とりあえずパッケージ関連図を出したい」だとこんな感じです。
+
+```
+mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*" -D"jig.document.types=PackageRelationDiagram"
+```
+
 ## 通常
 
 プラグインのバージョンとか設定を `/project/build/plugins` に追加
