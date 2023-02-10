@@ -3,7 +3,7 @@
 
     <groupId>com.github.irof</groupId>
     <artifactId>jig-maven-plugin</artifactId>
-    <version>2022.9.1</version>
+    <version>2023.1.1</version>
     <packaging>maven-plugin</packaging>
 
     <name>jig-maven-plugin</name>
