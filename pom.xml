@@ -12,7 +12,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <jig.version>2023.2.1</jig.version>
+        <jig.version>${project.version}</jig.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
