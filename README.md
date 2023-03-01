@@ -35,7 +35,7 @@ mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*"
             <plugin>
                 <groupId>com.github.irof</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>2021.11.4</version>
+                <version>2022.2.1.1</version>
                 <configuration>
                     <domainPattern>.*</domainPattern>
                 </configuration>
@@ -51,11 +51,18 @@ mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*"
 mvn jig:jig
 ```
 
+## マルチモジュールプロジェクト対応
+
+`2023.2.1.1` 以降、マルチモジュールプロジェクトに対応しています。
+使用例は https://github.com/dddjava/jig-sample/tree/main/sample-maven-multi を参照してください。
+
 # 設定
 
 |対象|configurationタグ名|プロパティ名|
 |----|----|----|
 |出力対象JIGドキュメント| `documentTypes` | `jig.document.types` |
 |ドメインのパターン| `domainPattern` | `jig.pattern.domain` |
+|TBD|||
 
 ともに任意。指定なしの場合はJIGのデフォルトに従う。
+
