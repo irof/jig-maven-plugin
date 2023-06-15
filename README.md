@@ -35,7 +35,7 @@ mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*"
             <plugin>
                 <groupId>com.github.irof</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>2022.2.1.1</version>
+                <version>2023.6.3</version>
                 <configuration>
                     <domainPattern>.*</domainPattern>
                 </configuration>
