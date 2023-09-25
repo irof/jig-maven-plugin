@@ -35,7 +35,7 @@ mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*"
             <plugin>
                 <groupId>com.github.irof</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>2023.6.3</version>
+                <version>2023.9.1</version>
                 <configuration>
                     <domainPattern>.*</domainPattern>
                 </configuration>
@@ -62,7 +62,6 @@ mvn jig:jig
 |----|----|----|
 |出力対象JIGドキュメント| `documentTypes` | `jig.document.types` |
 |ドメインのパターン| `domainPattern` | `jig.pattern.domain` |
-|TBD|||
 
-ともに任意。指定なしの場合はJIGのデフォルトに従う。
+任意。指定なしの場合はJIGのデフォルトに従う。
 
