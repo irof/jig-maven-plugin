@@ -9,7 +9,7 @@ import org.dddjava.jig.domain.model.sources.file.binary.BinarySourcePaths;
 import org.dddjava.jig.domain.model.sources.file.text.CodeSourcePaths;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
 import org.dddjava.jig.infrastructure.configuration.JigProperties;
-import org.dddjava.jig.presentation.controller.JigExecutor;
+import org.dddjava.jig.presentation.handler.JigExecutor;
 
 import java.io.File;
 import java.nio.file.Path;
