@@ -3,13 +3,13 @@ package com.github.irof.maven.plugin;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.dddjava.jig.JigExecutor;
 import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
 import org.dddjava.jig.domain.model.sources.file.SourcePaths;
 import org.dddjava.jig.domain.model.sources.file.binary.BinarySourcePaths;
 import org.dddjava.jig.domain.model.sources.file.text.CodeSourcePaths;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
 import org.dddjava.jig.infrastructure.configuration.JigProperties;
-import org.dddjava.jig.presentation.handler.JigExecutor;
 
 import java.io.File;
 import java.nio.file.Path;
