@@ -5,9 +5,9 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.dddjava.jig.JigExecutor;
 import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
-import org.dddjava.jig.domain.model.sources.file.SourcePaths;
-import org.dddjava.jig.domain.model.sources.file.binary.BinarySourcePaths;
-import org.dddjava.jig.domain.model.sources.file.text.CodeSourcePaths;
+import org.dddjava.jig.domain.model.sources.SourceBasePaths;
+import org.dddjava.jig.domain.model.sources.classsources.ClassSourceBasePaths;
+import org.dddjava.jig.domain.model.sources.javasources.JavaSourceBasePaths;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
 import org.dddjava.jig.infrastructure.configuration.JigProperties;
 
@@ -94,20 +94,20 @@ public class JigMojo extends AbstractMojo {
                 .collect(Collectors.toList());
     }
 
-    private SourcePaths sourcePaths() {
+    private SourceBasePaths sourcePaths() {
         // シングルプロジェクト
         if (modules.length == 0) {
-            BinarySourcePaths binarySourcePaths = new BinarySourcePaths(
+            ClassSourceBasePaths binarySourcePaths = new ClassSourceBasePaths(
                     Arrays.stream(classesDirectories).map(File::toPath).collect(Collectors.toList()));
-            CodeSourcePaths codeSourcePaths = new CodeSourcePaths(Arrays.stream(sourceDirectories)
+            JavaSourceBasePaths codeSourcePaths = new JavaSourceBasePaths(Arrays.stream(sourceDirectories)
                     .map(File::toPath).collect(Collectors.toList()));
-            return new SourcePaths(binarySourcePaths, codeSourcePaths);
+            return new SourceBasePaths(binarySourcePaths, codeSourcePaths);
         }
 
         // modulesがある場合はマルチモジュールプロジェクトとして処理する
-        return new SourcePaths(
-                new BinarySourcePaths(getPaths(classesDirectories, defaultClassesDirectory)),
-                new CodeSourcePaths(getPaths(sourceDirectories, defaultSourcesDirectory)));
+        return new SourceBasePaths(
+                new ClassSourceBasePaths(getPaths(classesDirectories, defaultClassesDirectory)),
+                new JavaSourceBasePaths(getPaths(sourceDirectories, defaultSourcesDirectory)));
     }
 
     private List<Path> getPaths(File[] specifiedDirectories, File defaultDirectory) {
