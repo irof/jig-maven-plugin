@@ -4,6 +4,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.dddjava.jig.JigExecutor;
+import org.dddjava.jig.domain.model.documents.documentformat.JigDiagramFormat;
 import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
 import org.dddjava.jig.domain.model.sources.SourceBasePaths;
 import org.dddjava.jig.domain.model.sources.classsources.ClassSourceBasePaths;
@@ -72,6 +73,9 @@ public class JigMojo extends AbstractMojo {
     @Parameter(property = "jig.pattern.domain")
     private String domainPattern;
 
+    @Parameter(defaultValue = "true")
+    private boolean transitiveReduction;
+
     public void execute() {
         JigExecutor.execute(configuration(), sourcePaths());
     }
@@ -80,7 +84,9 @@ public class JigMojo extends AbstractMojo {
         JigProperties properties = new JigProperties(
                 documentTypes(),
                 domainPattern,
-                targetDirectory.toPath()
+                targetDirectory.toPath(),
+                JigDiagramFormat.SVG,
+                transitiveReduction
         );
         return new Configuration(properties);
     }
