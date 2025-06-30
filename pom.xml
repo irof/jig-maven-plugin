@@ -133,7 +133,7 @@
         </developer>
     </developers>
     <scm>
-        <url>https://github.com/dddjava/jig</url>
+        <url>https://github.com/irof/jig-maven-plugin</url>
     </scm>
 
     <repositories>
