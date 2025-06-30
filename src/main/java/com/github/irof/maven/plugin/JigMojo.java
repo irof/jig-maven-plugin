@@ -6,9 +6,8 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.dddjava.jig.JigExecutor;
 import org.dddjava.jig.domain.model.documents.documentformat.JigDiagramFormat;
 import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
+import org.dddjava.jig.domain.model.sources.SourceBasePath;
 import org.dddjava.jig.domain.model.sources.SourceBasePaths;
-import org.dddjava.jig.domain.model.sources.classsources.ClassSourceBasePaths;
-import org.dddjava.jig.domain.model.sources.javasources.JavaSourceBasePaths;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
 import org.dddjava.jig.infrastructure.configuration.JigProperties;
 
@@ -103,17 +102,17 @@ public class JigMojo extends AbstractMojo {
     private SourceBasePaths sourcePaths() {
         // シングルプロジェクト
         if (modules.length == 0) {
-            ClassSourceBasePaths binarySourcePaths = new ClassSourceBasePaths(
+            SourceBasePath binarySourcePaths = new SourceBasePath(
                     Arrays.stream(classesDirectories).map(File::toPath).collect(Collectors.toList()));
-            JavaSourceBasePaths codeSourcePaths = new JavaSourceBasePaths(Arrays.stream(sourceDirectories)
+            SourceBasePath codeSourcePaths = new SourceBasePath(Arrays.stream(sourceDirectories)
                     .map(File::toPath).collect(Collectors.toList()));
             return new SourceBasePaths(binarySourcePaths, codeSourcePaths);
         }
 
         // modulesがある場合はマルチモジュールプロジェクトとして処理する
         return new SourceBasePaths(
-                new ClassSourceBasePaths(getPaths(classesDirectories, defaultClassesDirectory)),
-                new JavaSourceBasePaths(getPaths(sourceDirectories, defaultSourcesDirectory)));
+                new SourceBasePath(getPaths(classesDirectories, defaultClassesDirectory)),
+                new SourceBasePath(getPaths(sourceDirectories, defaultSourcesDirectory)));
     }
 
     private List<Path> getPaths(File[] specifiedDirectories, File defaultDirectory) {
