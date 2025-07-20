@@ -10,7 +10,7 @@ jig-maven-plugin
 ## 簡易
 
 ```
-mvn com.github.irof:jig-maven-plugin:jig
+mvn org.dddjava.jig:jig-maven-plugin:jig
 ```
 
 `pom.xml` には何も書かなくていいです。
@@ -18,12 +18,10 @@ mvn com.github.irof:jig-maven-plugin:jig
 「とりあえずパッケージ関連図を出したい」だとこんな感じです。
 
 ```
-mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*" -D"jig.document.types=PackageRelationDiagram"
+mvn clean compile org.dddjava.jig:jig-maven-plugin:jig -D"jig.pattern.domain=.*" -D"jig.document.types=PackageRelationDiagram"
 ```
 
 ## 通常
-
-プラグインのバージョンとか設定を `/project/build/plugins` に追加
 
 ```pom.xml
 <project>
@@ -33,9 +31,9 @@ mvn clean compile com.github.irof:jig-maven-plugin:jig -D"jig.pattern.domain=.*"
         <plugins>
             ...
             <plugin>
-                <groupId>com.github.irof</groupId>
+                <groupId>org.dddjava.jig</groupId>
                 <artifactId>jig-maven-plugin</artifactId>
-                <version>2023.9.1</version>
+                <version>${jig-maven-plugin.version}</version>
                 <configuration>
                     <domainPattern>.*</domainPattern>
                 </configuration>
