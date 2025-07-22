@@ -1,0 +1,20 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.irof</groupId>
+    <artifactId>jig-maven-plugin</artifactId>
+    <version>2025.7.1</version>
+    <packaging>pom</packaging>
+
+    <name>jig-maven-plugin</name>
+    <description>JIG Maven Plugin</description>
+    <url>https://dddjava.github.io/jig/</url>
+
+    <distributionManagement>
+        <relocation>
+            <groupId>org.dddjava.jig</groupId>
+            <artifactId>jig-maven-plugin</artifactId>
+            <version>2025.7.1</version>
+        </relocation>
+    </distributionManagement>
+</project>
