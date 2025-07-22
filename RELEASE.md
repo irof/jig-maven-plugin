@@ -15,3 +15,12 @@ RELEASE
 - https://central.sonatype.com/publishing/deployments を開く。
 - `Publish` ボタンを押す。
 - しばらく待てば完了。
+
+## relocation
+
+```sh
+./mvnw -f pom-irof.xml clean deploy
+```
+
+`com.github.irof:jig-maven-plugin` から `org.dddjava.jig:jig-maven-plugin` への変更。
+`2025.7.1` 以降。しばらく続ける。
