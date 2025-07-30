@@ -15,6 +15,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mojo(name = "jig")
@@ -69,6 +70,9 @@ public class JigMojo extends AbstractMojo {
     @Parameter(property = "jig.document.types")
     private String[] documentTypes;
 
+    @Parameter
+    private String[] excludeDocumentTypes;
+
     @Parameter(property = "jig.pattern.domain")
     private String domainPattern;
 
@@ -87,10 +91,20 @@ public class JigMojo extends AbstractMojo {
                 JigDiagramFormat.SVG,
                 transitiveReduction
         );
-        return new Configuration(properties);
+        return Configuration.from(properties);
     }
 
     private List<JigDocument> documentTypes() {
+        if (excludeDocumentTypes == null || excludeDocumentTypes.length == 0) {
+            return includeDocumentTypes();
+        }
+        var excludes = Set.of(excludeDocumentTypes);
+        return includeDocumentTypes().stream()
+                .filter(documentType -> !excludes.contains(documentType.name()))
+                .collect(Collectors.toList());
+    }
+
+    private List<JigDocument> includeDocumentTypes() {
         if (documentTypes == null || documentTypes.length == 0) {
             return JigDocument.canonical();
         }
