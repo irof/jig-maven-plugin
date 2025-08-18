@@ -59,6 +59,7 @@ mvn jig:jig
 |対象|configurationタグ名|プロパティ名|
 |----|----|----|
 |出力対象JIGドキュメント| `documentTypes` | `jig.document.types` |
+|出力除外JIGドキュメント| `excludeDocumentTypes` |  |
 |ドメインのパターン| `domainPattern` | `jig.pattern.domain` |
 
 任意。指定なしの場合はJIGのデフォルトに従う。
