@@ -13,6 +13,7 @@ import org.dddjava.jig.infrastructure.configuration.JigProperties;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -89,7 +90,9 @@ public class JigMojo extends AbstractMojo {
                 domainPattern,
                 targetDirectory.toPath(),
                 JigDiagramFormat.SVG,
-                transitiveReduction
+                transitiveReduction,
+                // TODO パラメタ化
+                Duration.ofSeconds(10)
         );
         return Configuration.from(properties);
     }
