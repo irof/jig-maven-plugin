@@ -81,7 +81,7 @@ public class JigMojo extends AbstractMojo {
     private boolean transitiveReduction;
 
     public void execute() {
-        JigExecutor.execute(configuration(), sourcePaths());
+        JigExecutor.standard(configuration(), sourcePaths());
     }
 
     private Configuration configuration() {
