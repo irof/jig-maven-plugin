@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -87,7 +88,7 @@ public class JigMojo extends AbstractMojo {
     private Configuration configuration() {
         JigProperties properties = new JigProperties(
                 documentTypes(),
-                domainPattern,
+                (domainPattern == null || domainPattern.isEmpty()) ? Optional.empty() : Optional.of(domainPattern),
                 targetDirectory.toPath(),
                 JigDiagramFormat.SVG,
                 transitiveReduction,
