@@ -4,7 +4,6 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.dddjava.jig.JigExecutor;
-import org.dddjava.jig.domain.model.documents.documentformat.JigDiagramFormat;
 import org.dddjava.jig.domain.model.documents.documentformat.JigDocument;
 import org.dddjava.jig.domain.model.sources.filesystem.SourceBasePath;
 import org.dddjava.jig.domain.model.sources.filesystem.SourceBasePaths;
@@ -13,7 +12,6 @@ import org.dddjava.jig.infrastructure.configuration.JigProperties;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -78,9 +76,6 @@ public class JigMojo extends AbstractMojo {
     @Parameter(property = "jig.pattern.domain")
     private String domainPattern;
 
-    @Parameter(defaultValue = "true")
-    private boolean transitiveReduction;
-
     public void execute() {
         JigExecutor.standard(configuration(), sourcePaths());
     }
@@ -89,11 +84,7 @@ public class JigMojo extends AbstractMojo {
         JigProperties properties = new JigProperties(
                 documentTypes(),
                 (domainPattern == null || domainPattern.isEmpty()) ? Optional.empty() : Optional.of(domainPattern),
-                targetDirectory.toPath(),
-                JigDiagramFormat.SVG,
-                transitiveReduction,
-                // TODO パラメタ化
-                Duration.ofSeconds(10)
+                targetDirectory.toPath()
         );
         return Configuration.from(properties);
     }
