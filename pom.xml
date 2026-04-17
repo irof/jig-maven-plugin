@@ -3,7 +3,7 @@
 
     <groupId>org.dddjava.jig</groupId>
     <artifactId>jig-maven-plugin</artifactId>
-    <version>2026.4.2</version>
+    <version>2026.4.3</version>
     <packaging>maven-plugin</packaging>
 
     <name>jig-maven-plugin</name>
@@ -12,7 +12,6 @@
 
     <properties>
         <java.version>21</java.version>
-        <jig.version>2026.4.2</jig.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +22,7 @@
         <dependency>
             <groupId>org.dddjava.jig</groupId>
             <artifactId>jig-core</artifactId>
-            <version>${jig.version}</version>
+            <version>2026.4.3</version>
         </dependency>
 
         <dependency>
