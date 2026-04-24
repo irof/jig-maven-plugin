@@ -3,7 +3,7 @@
 
     <groupId>com.github.irof</groupId>
     <artifactId>jig-maven-plugin</artifactId>
-    <version>2026.4.5</version>
+    <version>2026.4.6</version>
     <packaging>pom</packaging>
 
     <name>jig-maven-plugin</name>
@@ -14,7 +14,7 @@
         <relocation>
             <groupId>org.dddjava.jig</groupId>
             <artifactId>jig-maven-plugin</artifactId>
-            <version>2026.4.5</version>
+            <version>2026.4.6</version>
         </relocation>
     </distributionManagement>
 
