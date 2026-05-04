@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.dddjava.jig</groupId>
             <artifactId>jig-core</artifactId>
-            <version>2026.4.6</version>
+            <version>2026.4.8</version>
         </dependency>
 
         <dependency>
