@@ -8,13 +8,14 @@ import org.dddjava.jig.domain.model.documents.JigDocument;
 import org.dddjava.jig.domain.model.sources.filesystem.SourceBasePath;
 import org.dddjava.jig.domain.model.sources.filesystem.SourceBasePaths;
 import org.dddjava.jig.infrastructure.configuration.Configuration;
-import org.dddjava.jig.infrastructure.configuration.JigProperties;
+import org.dddjava.jig.infrastructure.configuration.JigSettings;
+import org.dddjava.jig.infrastructure.configuration.JigSettingsLoader;
+import org.dddjava.jig.infrastructure.configuration.PartialJigSettings;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -81,12 +82,13 @@ public class JigMojo extends AbstractMojo {
     }
 
     private Configuration configuration() {
-        JigProperties properties = new JigProperties(
-                documentTypes(),
-                (domainPattern == null || domainPattern.isEmpty()) ? Optional.empty() : Optional.of(domainPattern),
-                targetDirectory.toPath()
-        );
-        return Configuration.from(properties);
+        PartialJigSettings explicit = PartialJigSettings.builder()
+                .outputDirectory(targetDirectory.toPath())
+                .domainPattern(domainPattern)
+                .jigDocuments(documentTypes())
+                .build();
+        JigSettings settings = JigSettingsLoader.loadStandard(explicit);
+        return Configuration.from(settings);
     }
 
     private List<JigDocument> documentTypes() {
